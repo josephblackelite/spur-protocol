@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spurprotocol.dev/schemas/ExecutionPlan.schema.json",
+  "title": "ExecutionPlan",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "planId": {
+      "type": "string"
+    },
+    "sourceEnvelopeId": {
+      "type": "string"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "stepId": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          }
+        },
+        "required": ["stepId", "action"]
+      }
+    },
+    "auditRequirements": {
+      "type": "object"
+    }
+  },
+  "required": ["version", "planId", "sourceEnvelopeId", "steps", "auditRequirements"]
+}

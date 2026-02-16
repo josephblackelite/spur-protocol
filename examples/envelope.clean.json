@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "id": "env-001",
+  "issuedAt": "2026-01-15T09:30:00Z",
+  "intent": {
+    "verb": "clean",
+    "target": "bathroom"
+  },
+  "constraints": {
+    "maxDurationMinutes": 45,
+    "materialsAllowed": ["bleach", "detergent"]
+  },
+  "requiredCapabilities": ["surface-cleaning", "disinfection"]
+}
