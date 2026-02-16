@@ -1,0 +1,18 @@
+{
+  "name": "@spur/types",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --eval \"console.log('No tests for @spur/types')\""
+  },
+  "dependencies": {
+    "json-schema-to-ts": "^3.1.1"
+  }
+}
