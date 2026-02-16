@@ -1,19 +1,19 @@
-**#Spur Protocol**
+# Spur Protocol
 
-Spur Protocol is an open standard for defining, governing, and distributing reusable robotics Skill Packs.
+Spur Protocol is an open standard for packaging, validating, and deploying robotics Skill Packs across heterogeneous autonomous fleets.
 
-It provides a deterministic execution contract between skill authors, fleet operators, and autonomous systems.
+Task Envelope + Skill Pack + Governance Policy -> Execution Plan -> Fleet Runtime
 
-By separating intent, skill logic, and governance policy, Spur enables:
+## Terminology
 
-**Vendor-agnostic compilation
+Canonical terms are defined in [`spec/terminology.md`](spec/terminology.md).
 
-Fleet-level deployment
+## Repository structure
 
-Deterministic task validation
+- `spec/` — normative and supporting protocol documentation.
+- `schemas/` — machine-readable schema definitions.
+- `examples/` — example payloads and conformance vectors.
 
-Auditability and compliance
+## Status
 
-Portable skill distribution**
-
-Spur Protocol is designed for both industrial robotics fleets and personal autonomous systems.
+Draft (v0.1 in progress)
