@@ -1,4 +1,4 @@
-import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spur/types';
+import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spurprotocol/types';
 export declare function compileExecutionPlan(params: {
     envelope: SpurEnvelope;
     skill: SkillPack;

@@ -27,7 +27,7 @@ importers:
 
   packages/compiler:
     dependencies:
-      '@spur/types':
+      '@spurprotocol/types':
         specifier: workspace:*
         version: link:../types
 
@@ -39,7 +39,7 @@ importers:
 
   packages/validator:
     dependencies:
-      '@spur/types':
+      '@spurprotocol/types':
         specifier: workspace:*
         version: link:../types
       ajv:
