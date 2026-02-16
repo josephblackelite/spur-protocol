@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { existsSync, rmSync } from 'node:fs';
-import { join } from 'node:path';
+import path, { dirname, join } from 'node:path';
 
 const root = process.cwd();
 const packages = ['types', 'validator', 'compiler'];
@@ -16,8 +16,28 @@ function run(cmd, args, cwd = root) {
   return execFileSync(cmd, args, { cwd, encoding: 'utf8' }).trim();
 }
 
+function resolveCorepackPath() {
+  const nodeDir = dirname(process.execPath);
+  const candidates = [
+    path.resolve(nodeDir, '..', 'lib', 'node_modules', 'corepack', 'dist', 'corepack.js'),
+    path.resolve(nodeDir, '..', 'node_modules', 'corepack', 'dist', 'corepack.js'),
+    path.resolve(nodeDir, 'node_modules', 'corepack', 'dist', 'corepack.js'),
+  ];
+
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  throw new Error(
+    `Unable to locate corepack at expected Node installation paths. Please install or enable corepack and try again. Checked: ${candidates.join(', ')}`,
+  );
+}
+
 console.log('Building workspace packages...');
-run('corepack', ['pnpm', '-r', 'build']);
+const corepackPath = resolveCorepackPath();
+execFileSync(process.execPath, [corepackPath, 'pnpm', '-r', 'build'], { stdio: 'inherit' });
 
 for (const pkg of packages) {
   const cwd = join(root, 'packages', pkg);
