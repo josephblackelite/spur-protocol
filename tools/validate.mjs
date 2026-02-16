@@ -145,6 +145,7 @@ const exampleToSchema = [
   { regex: /^skill\./i, schemaName: 'SkillPack' },
   { regex: /^policy\./i, schemaName: 'GovernancePolicy' },
   { regex: /^plan\./i, schemaName: 'ExecutionPlan' },
+  { regex: /^robot\./i, schemaName: 'RobotProfile' },
 ];
 
 for (const examplePath of walk(path.join(root, 'examples'), (p) => p.endsWith('.json'))) {

@@ -16,6 +16,12 @@ Resolved, runtime-ready plan produced from task intent, available skills, and ap
 
 Task Envelope + Skill Pack + Governance Policy -> Execution Plan -> Fleet Runtime
 
+
+## Supporting terms
+
+### Robot Profile (RobotProfile)
+Supporting schema that describes robot-specific capabilities, limits, and adapters used during plan compilation.
+
 ## Legacy term mapping
 
 - Mission envelope -> Task Envelope (SpurEnvelope)
