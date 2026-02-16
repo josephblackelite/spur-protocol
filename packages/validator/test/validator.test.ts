@@ -44,4 +44,15 @@ describe('validator', () => {
     expect(() => validateGovernancePolicy(invalidPolicy)).toThrow(/required property/i);
     expect(() => validateExecutionPlan(invalidPlan)).toThrow(/required property/i);
   });
+
+  it('rejects execution plan without integrity fields', () => {
+    const missingHashPlan = loadExample('plan.generated.json');
+    delete missingHashPlan.hash;
+
+    const missingCreatedAtPlan = loadExample('plan.generated.json');
+    delete missingCreatedAtPlan.createdAt;
+
+    expect(() => validateExecutionPlan(missingHashPlan)).toThrow(/required property/i);
+    expect(() => validateExecutionPlan(missingCreatedAtPlan)).toThrow(/required property/i);
+  });
 });
