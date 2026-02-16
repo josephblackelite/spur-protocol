@@ -17,7 +17,7 @@ function run(cmd, args, cwd = root) {
 }
 
 console.log('Building workspace packages...');
-run('pnpm', ['-r', 'build']);
+run('corepack', ['pnpm', '-r', 'build']);
 
 for (const pkg of packages) {
   const cwd = join(root, 'packages', pkg);
