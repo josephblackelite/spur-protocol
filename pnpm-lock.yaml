@@ -25,7 +25,37 @@ importers:
         specifier: ^3.0.8
         version: 3.2.4(@types/node@22.19.11)
 
+  packages/cli:
+    dependencies:
+      '@spurprotocol/doctor':
+        specifier: workspace:*
+        version: link:../doctor
+      '@spurprotocol/explain':
+        specifier: workspace:*
+        version: link:../explain
+      '@spurprotocol/types':
+        specifier: workspace:*
+        version: link:../types
+
   packages/compiler:
+    dependencies:
+      '@spurprotocol/types':
+        specifier: workspace:*
+        version: link:../types
+
+  packages/doctor:
+    dependencies:
+      '@spurprotocol/compiler':
+        specifier: workspace:*
+        version: link:../compiler
+      '@spurprotocol/types':
+        specifier: workspace:*
+        version: link:../types
+      '@spurprotocol/validator':
+        specifier: workspace:*
+        version: link:../validator
+
+  packages/explain:
     dependencies:
       '@spurprotocol/types':
         specifier: workspace:*

@@ -1,5 +1,5 @@
 {
-  "name": "@spurprotocol/types",
+  "name": "@spurprotocol/doctor",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
@@ -19,10 +19,12 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node --eval \"console.log('No tests for @spur/types')\"",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
-    "json-schema-to-ts": "^3.1.1"
+    "@spurprotocol/types": "workspace:*",
+    "@spurprotocol/validator": "workspace:*",
+    "@spurprotocol/compiler": "workspace:*"
   }
 }

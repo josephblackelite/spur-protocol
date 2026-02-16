@@ -1,5 +1,6 @@
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 import executionPlanSchema from '../../../schemas/ExecutionPlan.schema.json';
+import adapterContractSchema from '../../../schemas/AdapterContract.schema.json';
 import governancePolicySchema from '../../../schemas/GovernancePolicy.schema.json';
 import robotProfileSchema from '../../../schemas/RobotProfile.schema.json';
 import skillPackSchema from '../../../schemas/SkillPack.schema.json';
@@ -8,5 +9,11 @@ export type SpurEnvelope = FromSchema<(typeof spurEnvelopeSchema) & JSONSchema>;
 export type SkillPack = FromSchema<(typeof skillPackSchema) & JSONSchema>;
 export type GovernancePolicy = FromSchema<(typeof governancePolicySchema) & JSONSchema>;
 export type ExecutionPlan = FromSchema<(typeof executionPlanSchema) & JSONSchema>;
+export type AdapterContract = FromSchema<(typeof adapterContractSchema) & JSONSchema>;
 export type RobotProfile = FromSchema<(typeof robotProfileSchema) & JSONSchema>;
+export type EnforcementMode = 'ALLOW' | 'DENY';
+export type EnforcementDecision = {
+    mode: EnforcementMode;
+    reason: string;
+};
 //# sourceMappingURL=index.d.ts.map
