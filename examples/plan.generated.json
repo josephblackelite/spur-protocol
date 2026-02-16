@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "planId": "plan-001",
+  "sourceEnvelopeId": "env-001",
+  "steps": [
+    {
+      "stepId": "step-1",
+      "action": "Apply disinfectant to sink and counter surfaces"
+    },
+    {
+      "stepId": "step-2",
+      "action": "Scrub toilet bowl and wipe exterior surfaces"
+    }
+  ],
+  "auditRequirements": {
+    "captureStepResults": true,
+    "includeTimestamps": true
+  }
+}

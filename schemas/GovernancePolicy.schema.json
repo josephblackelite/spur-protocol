@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spurprotocol.dev/schemas/GovernancePolicy.schema.json",
+  "title": "GovernancePolicy",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "policyId": {
+      "type": "string"
+    },
+    "allowedVerbs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limits": {
+      "type": "object"
+    },
+    "audit": {
+      "type": "object"
+    }
+  },
+  "required": ["version", "policyId", "allowedVerbs", "limits", "audit"]
+}

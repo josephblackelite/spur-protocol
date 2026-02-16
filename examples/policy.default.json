@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "policyId": "policy-default-v1",
+  "allowedVerbs": ["clean", "inspect"],
+  "limits": {
+    "maxConcurrentPlans": 3,
+    "maxPlanDurationMinutes": 120
+  },
+  "audit": {
+    "logLevel": "standard",
+    "retainDays": 90
+  }
+}

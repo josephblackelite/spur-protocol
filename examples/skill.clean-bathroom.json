@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "skillId": "skill-clean-bathroom-v1",
+  "name": "Clean Bathroom",
+  "category": "housekeeping",
+  "capabilitiesProvided": ["surface-cleaning", "disinfection"],
+  "inputs": {
+    "rooms": ["bathroom"],
+    "preferredProducts": ["bleach"]
+  },
+  "steps": [
+    {
+      "stepId": "step-1",
+      "action": "Apply disinfectant to sink and counter surfaces"
+    },
+    {
+      "stepId": "step-2",
+      "action": "Scrub toilet bowl and wipe exterior surfaces"
+    }
+  ]
+}
