@@ -1,4 +1,4 @@
-import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spur/types';
+import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spurprotocol/types';
 export declare function validateSpurEnvelope(data: unknown): asserts data is SpurEnvelope;
 export declare function validateSkillPack(data: unknown): asserts data is SkillPack;
 export declare function validateGovernancePolicy(data: unknown): asserts data is GovernancePolicy;

@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 
-import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spur/types';
+import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spurprotocol/types';
 
 import { stableStringify } from './normalize.js';
 

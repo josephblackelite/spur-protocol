@@ -5,7 +5,9 @@
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "build": "pnpm -r build",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "pack:check": "node tools/pack-check.mjs",
+    "publish:dry": "pnpm -r build && pnpm -r test && node tools/validate.mjs && node tools/pack-check.mjs && node -e \"console.log('Run these commands to publish:\\\n  pnpm -r --filter @spurprotocol/types publish --access public\\\n  pnpm -r --filter @spurprotocol/validator publish --access public\\\n  pnpm -r --filter @spurprotocol/compiler publish --access public')\""
   },
   "dependencies": {
     "ajv": "^8.17.1",

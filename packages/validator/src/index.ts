@@ -2,7 +2,7 @@ import Ajv2020 from 'ajv/dist/2020';
 import type { ErrorObject, ValidateFunction } from 'ajv';
 import addFormats from 'ajv-formats';
 
-import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spur/types';
+import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spurprotocol/types';
 
 import executionPlanSchema from '../../../schemas/ExecutionPlan.schema.json';
 import governancePolicySchema from '../../../schemas/GovernancePolicy.schema.json';
