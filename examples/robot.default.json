@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "robotId": "robot-001",
+  "capabilities": ["surface-cleaning", "disinfection"],
+  "limits": {
+    "maxPayloadKg": 8,
+    "maxShiftMinutes": 240
+  },
+  "adapters": ["gripper.v1", "sprayer.v2"]
+}

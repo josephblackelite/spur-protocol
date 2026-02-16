@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spurprotocol.dev/schemas/RobotProfile.schema.json",
+  "title": "RobotProfile",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "robotId": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "maxPayloadKg": {
+          "type": "number"
+        },
+        "maxShiftMinutes": {
+          "type": "number"
+        }
+      }
+    },
+    "adapters": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["version", "robotId", "capabilities", "limits", "adapters"]
+}
