@@ -68,10 +68,16 @@ function validateSchema(value, schema, pathPrefix = '$') {
     return schemaErrors;
   }
 
+  if (Object.hasOwn(schema, 'enum') && !schema.enum.includes(value)) {
+    schemaErrors.push(`${pathPrefix}: expected one of ${JSON.stringify(schema.enum)}, got ${JSON.stringify(value)}`);
+    return schemaErrors;
+  }
+
   if (schema.type) {
     const actualType = typeName(value);
-    if (actualType !== schema.type) {
-      schemaErrors.push(`${pathPrefix}: expected type ${schema.type}, got ${actualType}`);
+    const expectedTypes = Array.isArray(schema.type) ? schema.type : [schema.type];
+    if (!expectedTypes.includes(actualType)) {
+      schemaErrors.push(`${pathPrefix}: expected type ${expectedTypes.join(' | ')}, got ${actualType}`);
       return schemaErrors;
     }
   }
@@ -146,6 +152,7 @@ const exampleToSchema = [
   { regex: /^policy\./i, schemaName: 'GovernancePolicy' },
   { regex: /^plan\./i, schemaName: 'ExecutionPlan' },
   { regex: /^robot\./i, schemaName: 'RobotProfile' },
+  { regex: /^audit\./i, schemaName: 'AuditEvent' },
 ];
 
 for (const examplePath of walk(path.join(root, 'examples'), (p) => p.endsWith('.json'))) {

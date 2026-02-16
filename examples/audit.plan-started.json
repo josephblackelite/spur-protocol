@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "eventId": "evt-0001",
+  "occurredAt": "2026-01-01T10:00:00Z",
+  "planHash": "sha256:planhash001",
+  "envelopeId": "env-001",
+  "policyId": "policy-default",
+  "robotId": "robot-alpha",
+  "level": "info",
+  "type": "PLAN_STARTED",
+  "stepId": null,
+  "message": "Execution plan started.",
+  "data": {
+    "planId": "plan-001",
+    "runId": "run-001"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "eventId": "evt-0003",
+  "occurredAt": "2026-01-01T10:05:00Z",
+  "planHash": "sha256:planhash001",
+  "envelopeId": "env-001",
+  "policyId": "policy-default",
+  "robotId": "robot-alpha",
+  "level": "info",
+  "type": "PLAN_COMPLETED",
+  "stepId": null,
+  "message": "Execution plan completed.",
+  "data": {
+    "planId": "plan-001",
+    "status": "success"
+  }
+}

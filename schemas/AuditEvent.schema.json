@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spurprotocol.dev/schemas/AuditEvent.schema.json",
+  "title": "AuditEvent",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "planHash": {
+      "type": "string"
+    },
+    "envelopeId": {
+      "type": "string"
+    },
+    "policyId": {
+      "type": "string"
+    },
+    "robotId": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["info", "warn", "error"]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "PLAN_ACCEPTED",
+        "PLAN_STARTED",
+        "STEP_STARTED",
+        "STEP_COMPLETED",
+        "STEP_FAILED",
+        "PLAN_COMPLETED",
+        "PLAN_ABORTED"
+      ]
+    },
+    "stepId": {
+      "type": ["string", "null"]
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "version",
+    "eventId",
+    "occurredAt",
+    "planHash",
+    "envelopeId",
+    "policyId",
+    "robotId",
+    "level",
+    "type",
+    "stepId",
+    "message",
+    "data"
+  ]
+}

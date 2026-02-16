@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "eventId": "evt-0002",
+  "occurredAt": "2026-01-01T10:01:10Z",
+  "planHash": "sha256:planhash001",
+  "envelopeId": "env-001",
+  "policyId": "policy-default",
+  "robotId": "robot-alpha",
+  "level": "info",
+  "type": "STEP_COMPLETED",
+  "stepId": "step-02",
+  "message": "Step completed successfully.",
+  "data": {
+    "action": "move_to_zone",
+    "durationMs": 4300
+  }
+}
