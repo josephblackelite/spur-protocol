@@ -10,9 +10,9 @@ Canonical terms are defined in [`spec/terminology.md`](spec/terminology.md).
 
 ## Repository structure
 
-- `spec/` — normative and supporting protocol documentation.
-- `schemas/` — machine-readable schema definitions.
-- `examples/` — example payloads and conformance vectors.
+- `spec/` — normative and supporting protocol documentation, including the Fleet Runtime Contract (`spec/runtime-contract.md`).
+- `schemas/` — machine-readable schema definitions (including `AuditEvent`).
+- `examples/` — example payloads and conformance vectors (including audit event examples).
 
 ## Status
 
