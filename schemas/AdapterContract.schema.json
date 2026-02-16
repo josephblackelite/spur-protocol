@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spurprotocol.dev/schemas/AdapterContract.schema.json",
+  "title": "AdapterContract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.1.0"
+    },
+    "adapterId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "interopContexts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["SIM", "ROS2", "VDA5050", "HTTP_API", "OPCUA", "OTHER"]
+      }
+    },
+    "supportedVerbs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supportedCapabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraintSupport": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "speedLimit": {
+          "type": "boolean"
+        },
+        "forceLimit": {
+          "type": "boolean"
+        },
+        "zoneEnforcement": {
+          "type": "boolean"
+        },
+        "approvalGates": {
+          "type": "boolean"
+        }
+      },
+      "required": ["speedLimit", "forceLimit", "zoneEnforcement", "approvalGates"]
+    },
+    "auditSupport": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "emitsAuditEvents": {
+          "const": true
+        },
+        "minimumEventSet": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "allOf": [
+            {
+              "contains": {
+                "const": "PLAN_STARTED"
+              }
+            },
+            {
+              "contains": {
+                "const": "STEP_STARTED"
+              }
+            },
+            {
+              "contains": {
+                "const": "STEP_COMPLETED"
+              }
+            },
+            {
+              "contains": {
+                "const": "PLAN_COMPLETED"
+              }
+            }
+          ]
+        }
+      },
+      "required": ["emitsAuditEvents", "minimumEventSet"]
+    },
+    "endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["local", "http", "ros2", "opcua", "other"]
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "uri"]
+    }
+  },
+  "required": [
+    "version",
+    "adapterId",
+    "name",
+    "interopContexts",
+    "supportedVerbs",
+    "supportedCapabilities",
+    "constraintSupport",
+    "auditSupport",
+    "endpoint"
+  ]
+}
