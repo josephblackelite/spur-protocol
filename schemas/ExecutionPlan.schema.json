@@ -14,6 +14,13 @@
     "sourceEnvelopeId": {
       "type": "string"
     },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hash": {
+      "type": "string"
+    },
     "steps": {
       "type": "array",
       "items": {
@@ -34,5 +41,13 @@
       "type": "object"
     }
   },
-  "required": ["version", "planId", "sourceEnvelopeId", "steps", "auditRequirements"]
+  "required": [
+    "version",
+    "planId",
+    "sourceEnvelopeId",
+    "createdAt",
+    "hash",
+    "steps",
+    "auditRequirements"
+  ]
 }

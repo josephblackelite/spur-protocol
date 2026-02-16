@@ -25,6 +25,12 @@ importers:
         specifier: ^3.0.8
         version: 3.2.4(@types/node@22.19.11)
 
+  packages/compiler:
+    dependencies:
+      '@spur/types':
+        specifier: workspace:*
+        version: link:../types
+
   packages/types:
     dependencies:
       json-schema-to-ts:

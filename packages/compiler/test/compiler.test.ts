@@ -26,9 +26,35 @@ describe('compileExecutionPlan', () => {
       version: '0.1.0',
       planId: `${envelope.id}-plan`,
       sourceEnvelopeId: envelope.id,
+      createdAt: envelope.issuedAt,
       steps: skill.steps,
       auditRequirements: policy.audit,
+      hash: 'c6c7d44525f6fcf54c0257ca5eba3feeeaa5460081e4b576dbbc45f87818e856',
     });
+  });
+
+  it('produces stable hashes for identical inputs and different hash for changed input', () => {
+    const envelope = loadExample('envelope.clean.json');
+    const skill = loadExample('skill.clean-bathroom.json');
+    const policy = loadExample('policy.default.json');
+    const robot = loadExample('robot.default.json');
+
+    const firstPlan = compileExecutionPlan({ envelope, skill, policy, robot });
+    const secondPlan = compileExecutionPlan({ envelope, skill, policy, robot });
+
+    expect(firstPlan.hash).toBe(secondPlan.hash);
+
+    const changedEnvelope = structuredClone(envelope);
+    changedEnvelope.id = 'env-002';
+
+    const changedPlan = compileExecutionPlan({
+      envelope: changedEnvelope,
+      skill,
+      policy,
+      robot,
+    });
+
+    expect(changedPlan.hash).not.toBe(firstPlan.hash);
   });
 
   it('throws when verb is disallowed', () => {
