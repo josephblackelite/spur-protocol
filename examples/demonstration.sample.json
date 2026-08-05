@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "demonstrationId": "demo-clean-bathroom-0001",
+  "skillId": "skill-clean-bathroom-v1",
+  "contributorId": "contributor-0001",
+  "submittedAt": "2026-02-01T12:00:00Z",
+  "media": [
+    {
+      "type": "video",
+      "uri": "https://media.example.internal/demonstrations/demo-clean-bathroom-0001/clip-01.mp4",
+      "hash": "sha256:a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+    }
+  ],
+  "consent": {
+    "licenseType": "CC-BY-4.0",
+    "usageGrant": ["training", "evaluation"],
+    "revocable": true,
+    "attestedAt": "2026-02-01T12:00:00Z"
+  },
+  "reviewStatus": "pending"
+}

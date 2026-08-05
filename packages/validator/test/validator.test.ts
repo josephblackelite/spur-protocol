@@ -5,8 +5,12 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
 import {
+  validateAdapterContract,
+  validateAuditEvent,
   validateExecutionPlan,
   validateGovernancePolicy,
+  validateRobotProfile,
+  validateSkillDemonstration,
   validateSkillPack,
   validateSpurEnvelope,
 } from '../src/index.js';
@@ -24,6 +28,12 @@ describe('validator', () => {
     expect(() => validateSkillPack(loadExample('skill.clean-bathroom.json'))).not.toThrow();
     expect(() => validateGovernancePolicy(loadExample('policy.default.json'))).not.toThrow();
     expect(() => validateExecutionPlan(loadExample('plan.generated.json'))).not.toThrow();
+    expect(() => validateRobotProfile(loadExample('robot.default.json'))).not.toThrow();
+    expect(() => validateAdapterContract(loadExample('adapter.sim.json'))).not.toThrow();
+    expect(() => validateAuditEvent(loadExample('audit.plan-started.json'))).not.toThrow();
+    expect(() => validateAuditEvent(loadExample('audit.step-completed.json'))).not.toThrow();
+    expect(() => validateAuditEvent(loadExample('audit.plan-completed.json'))).not.toThrow();
+    expect(() => validateSkillDemonstration(loadExample('demonstration.sample.json'))).not.toThrow();
   });
 
   it('rejects missing required fields', () => {
@@ -54,5 +64,19 @@ describe('validator', () => {
 
     expect(() => validateExecutionPlan(missingHashPlan)).toThrow(/required property/i);
     expect(() => validateExecutionPlan(missingCreatedAtPlan)).toThrow(/required property/i);
+  });
+
+  it('rejects a skill demonstration missing consent', () => {
+    const invalidDemonstration = loadExample('demonstration.sample.json');
+    delete invalidDemonstration.consent;
+
+    expect(() => validateSkillDemonstration(invalidDemonstration)).toThrow(/required property/i);
+  });
+
+  it('rejects a skill demonstration with a malformed media hash', () => {
+    const invalidDemonstration = loadExample('demonstration.sample.json');
+    invalidDemonstration.media[0].hash = 'not-a-valid-hash';
+
+    expect(() => validateSkillDemonstration(invalidDemonstration)).toThrow(/must match pattern/i);
   });
 });

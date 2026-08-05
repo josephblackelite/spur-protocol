@@ -22,6 +22,9 @@ Task Envelope + Skill Pack + Governance Policy -> Execution Plan -> Fleet Runtim
 ### Robot Profile (RobotProfile)
 Supporting schema that describes robot-specific capabilities, limits, and adapters used during plan compilation.
 
+### Skill Demonstration (SkillDemonstration)
+Supporting schema that records a human demonstrating a SkillPack's task, carrying media references, a consent/licensing grant, and a review status, used to source and license training data. It is independent of the core Task Envelope + SkillPack + Governance Policy -> Execution Plan -> Runtime pipeline.
+
 ## Legacy term mapping
 
 - Mission envelope -> Task Envelope (SpurEnvelope)

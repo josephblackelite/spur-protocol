@@ -9,3 +9,5 @@ Task Envelope + SkillPack + Governance Policy -> ExecutionPlan -> Runtime
 ```
 
 Adapters may translate Execution Plans into platform-specific commands for Interop Contexts such as ROS2, VDA 5050, or vendor APIs, while preserving protocol semantics.
+
+A Skill Demonstration (SkillDemonstration) is a supporting object that attaches provenance and consent metadata — media references, a licensing grant, and a review status — to a SkillPack. It documents how training data for a skill was sourced and licensed, and does not flow into ExecutionPlan compilation.

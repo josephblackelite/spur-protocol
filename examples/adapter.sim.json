@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "adapterId": "adapter-sim-http-01",
   "name": "Simulation + HTTP Adapter",
   "interopContexts": ["SIM", "HTTP_API"],

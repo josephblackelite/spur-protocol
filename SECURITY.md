@@ -2,7 +2,8 @@
 
 ## Reporting a vulnerability
 
-Report potential security issues through the project's private reporting channel.
+Report potential security issues through the project's private reporting channel:
+GitHub Security Advisories at https://github.com/josephblackelite/spur-protocol/security/advisories/new.
 Include reproduction steps, impact assessment, and affected versions.
 
 ## Response process

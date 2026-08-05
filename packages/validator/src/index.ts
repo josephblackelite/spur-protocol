@@ -1,13 +1,26 @@
-import Ajv2020 from 'ajv/dist/2020';
+import Ajv2020 from 'ajv/dist/2020.js';
 import type { ErrorObject, ValidateFunction } from 'ajv';
 import addFormats from 'ajv-formats';
 
-import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spurprotocol/types';
+import {
+  AdapterContract,
+  AuditEvent,
+  ExecutionPlan,
+  GovernancePolicy,
+  RobotProfile,
+  SkillDemonstration,
+  SkillPack,
+  SpurEnvelope,
+} from '@spurprotocol/types';
 
-import executionPlanSchema from '../../../schemas/ExecutionPlan.schema.json';
-import governancePolicySchema from '../../../schemas/GovernancePolicy.schema.json';
-import skillPackSchema from '../../../schemas/SkillPack.schema.json';
-import spurEnvelopeSchema from '../../../schemas/SpurEnvelope.schema.json';
+import adapterContractSchema from '../../../schemas/AdapterContract.schema.json' with { type: 'json' };
+import auditEventSchema from '../../../schemas/AuditEvent.schema.json' with { type: 'json' };
+import executionPlanSchema from '../../../schemas/ExecutionPlan.schema.json' with { type: 'json' };
+import governancePolicySchema from '../../../schemas/GovernancePolicy.schema.json' with { type: 'json' };
+import robotProfileSchema from '../../../schemas/RobotProfile.schema.json' with { type: 'json' };
+import skillDemonstrationSchema from '../../../schemas/SkillDemonstration.schema.json' with { type: 'json' };
+import skillPackSchema from '../../../schemas/SkillPack.schema.json' with { type: 'json' };
+import spurEnvelopeSchema from '../../../schemas/SpurEnvelope.schema.json' with { type: 'json' };
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 addFormats(ajv);
@@ -16,6 +29,10 @@ const validateSpurEnvelopeSchema = ajv.compile<SpurEnvelope>(spurEnvelopeSchema)
 const validateSkillPackSchema = ajv.compile<SkillPack>(skillPackSchema);
 const validateGovernancePolicySchema = ajv.compile<GovernancePolicy>(governancePolicySchema);
 const validateExecutionPlanSchema = ajv.compile<ExecutionPlan>(executionPlanSchema);
+const validateRobotProfileSchema = ajv.compile<RobotProfile>(robotProfileSchema);
+const validateAdapterContractSchema = ajv.compile<AdapterContract>(adapterContractSchema);
+const validateAuditEventSchema = ajv.compile<AuditEvent>(auditEventSchema);
+const validateSkillDemonstrationSchema = ajv.compile<SkillDemonstration>(skillDemonstrationSchema);
 
 function formatAjvErrors(errors: ErrorObject[] | null | undefined): string {
   if (!errors || errors.length === 0) {
@@ -53,4 +70,20 @@ export function validateGovernancePolicy(data: unknown): asserts data is Governa
 
 export function validateExecutionPlan(data: unknown): asserts data is ExecutionPlan {
   assertValid<ExecutionPlan>(validateExecutionPlanSchema, data, 'ExecutionPlan');
+}
+
+export function validateRobotProfile(data: unknown): asserts data is RobotProfile {
+  assertValid<RobotProfile>(validateRobotProfileSchema, data, 'RobotProfile');
+}
+
+export function validateAdapterContract(data: unknown): asserts data is AdapterContract {
+  assertValid<AdapterContract>(validateAdapterContractSchema, data, 'AdapterContract');
+}
+
+export function validateAuditEvent(data: unknown): asserts data is AuditEvent {
+  assertValid<AuditEvent>(validateAuditEventSchema, data, 'AuditEvent');
+}
+
+export function validateSkillDemonstration(data: unknown): asserts data is SkillDemonstration {
+  assertValid<SkillDemonstration>(validateSkillDemonstrationSchema, data, 'SkillDemonstration');
 }

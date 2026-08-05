@@ -13,3 +13,9 @@ A change is breaking if a previously valid payload becomes invalid, if required 
 ## Deprecation policy
 
 Features are first marked deprecated in a MINOR release with migration guidance. Removal occurs only in a subsequent MAJOR release.
+
+## Hash format convention
+
+New hash-bearing fields introduced from 0.2.0 onward (for example, `SkillDemonstration.media[].hash`) must use the `sha256:`-prefixed format (`sha256:<64 lowercase hex characters>`), matching the existing `AuditEvent` convention (`planHash`).
+
+`ExecutionPlan.hash` predates this convention and keeps its original bare-hex format (no `sha256:` prefix) for backward compatibility. It is not being changed by the 0.2.0 release.

@@ -19,7 +19,7 @@ export function compileExecutionPlan(params) {
         throw new Error('Compilation failed: robot does not satisfy all required capabilities');
     }
     const planWithoutHash = {
-        version: '0.1.0',
+        version: '0.2.0',
         planId: `${envelope.id}-plan`,
         sourceEnvelopeId: envelope.id,
         createdAt: envelope.issuedAt,

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "eventId": "evt-0001",
   "occurredAt": "2026-01-01T10:00:00Z",
   "planHash": "sha256:planhash001",

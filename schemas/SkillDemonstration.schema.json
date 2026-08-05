@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spurprotocol.dev/schemas/SkillDemonstration.schema.json",
+  "title": "SkillDemonstration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "0.2.0"
+    },
+    "demonstrationId": {
+      "type": "string"
+    },
+    "skillId": {
+      "type": "string"
+    },
+    "contributorId": {
+      "type": "string"
+    },
+    "submittedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "media": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["video", "motion_capture", "sensor_log", "other"]
+          },
+          "uri": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          }
+        },
+        "required": ["type", "uri", "hash"]
+      }
+    },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "licenseType": {
+          "type": "string"
+        },
+        "usageGrant": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "revocable": {
+          "type": "boolean"
+        },
+        "attestedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["licenseType", "usageGrant", "revocable", "attestedAt"]
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": ["pending", "approved", "rejected"]
+    }
+  },
+  "required": [
+    "version",
+    "demonstrationId",
+    "skillId",
+    "contributorId",
+    "submittedAt",
+    "media",
+    "consent",
+    "reviewStatus"
+  ]
+}

@@ -17,9 +17,9 @@ Canonical terms are defined in [`spec/terminology.md`](spec/terminology.md).
 ## Install
 
 ```sh
-pnpm add @spurprotocol/types@^0.1.0 @spurprotocol/validator@^0.1.0 @spurprotocol/compiler@^0.1.0
-npm i @spurprotocol/types@^0.1.0 @spurprotocol/validator@^0.1.0 @spurprotocol/compiler@^0.1.0
-yarn add @spurprotocol/types@^0.1.0 @spurprotocol/validator@^0.1.0 @spurprotocol/compiler@^0.1.0
+pnpm add @spurprotocol/types@^0.2.0 @spurprotocol/validator@^0.2.0 @spurprotocol/compiler@^0.2.0
+npm i @spurprotocol/types@^0.2.0 @spurprotocol/validator@^0.2.0 @spurprotocol/compiler@^0.2.0
+yarn add @spurprotocol/types@^0.2.0 @spurprotocol/validator@^0.2.0 @spurprotocol/compiler@^0.2.0
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ Validate an envelope:
 import { validateSpurEnvelope } from '@spurprotocol/validator';
 
 const envelope = {
-  version: '0.1.0',
+  version: '0.2.0',
   id: 'env-001',
   issuedAt: '2026-01-15T09:30:00Z',
   intent: {
@@ -52,7 +52,7 @@ import { compileExecutionPlan } from '@spurprotocol/compiler';
 const plan = compileExecutionPlan({
   envelope,
   skill: {
-    version: '0.1.0',
+    version: '0.2.0',
     skillId: 'skill-clean-bathroom-v1',
     name: 'Clean Bathroom',
     category: 'housekeeping',
@@ -61,14 +61,14 @@ const plan = compileExecutionPlan({
     steps: [{ stepId: 'step-1', action: 'Wipe sink surfaces' }],
   },
   policy: {
-    version: '0.1.0',
+    version: '0.2.0',
     policyId: 'policy-default-v1',
     allowedVerbs: ['clean'],
     limits: {},
     audit: {},
   },
   robot: {
-    version: '0.1.0',
+    version: '0.2.0',
     robotId: 'robot-001',
     capabilities: ['surface-cleaning'],
     limits: {},
@@ -79,8 +79,8 @@ const plan = compileExecutionPlan({
 console.log(plan.hash, plan.planId);
 ```
 
-Packages are versioned using SemVer. Current status remains Draft (v0.1).
+Packages are versioned using SemVer. Current status remains Draft (v0.2).
 
 ## Status
 
-Draft (v0.1 in progress)
+Draft (v0.2 in progress)

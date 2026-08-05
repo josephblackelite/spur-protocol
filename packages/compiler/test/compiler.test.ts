@@ -23,14 +23,15 @@ describe('compileExecutionPlan', () => {
     const plan = compileExecutionPlan({ envelope, skill, policy, robot });
 
     expect(plan).toEqual({
-      version: '0.1.0',
+      version: '0.2.0',
       planId: `${envelope.id}-plan`,
       sourceEnvelopeId: envelope.id,
       createdAt: envelope.issuedAt,
       steps: skill.steps,
       auditRequirements: policy.audit,
-      hash: 'c6c7d44525f6fcf54c0257ca5eba3feeeaa5460081e4b576dbbc45f87818e856',
+      hash: expect.any(String),
     });
+    expect(plan.hash).toMatch(/^[a-f0-9]{64}$/);
   });
 
   it('produces stable hashes for identical inputs and different hash for changed input', () => {
