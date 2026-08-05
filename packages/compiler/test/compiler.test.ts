@@ -23,7 +23,7 @@ describe('compileExecutionPlan', () => {
     const plan = compileExecutionPlan({ envelope, skill, policy, robot });
 
     expect(plan).toEqual({
-      version: '0.2.0',
+      version: '0.3.0',
       planId: `${envelope.id}-plan`,
       sourceEnvelopeId: envelope.id,
       createdAt: envelope.issuedAt,

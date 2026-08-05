@@ -4,6 +4,8 @@ import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spurp
 
 import { stableStringify } from './normalize.js';
 
+export { stableStringify } from './normalize.js';
+
 type EnvelopeForCompilation = {
   id: string;
   issuedAt: string;
@@ -53,7 +55,7 @@ export function compileExecutionPlan(params: {
   }
 
   const planWithoutHash = {
-    version: '0.2.0',
+    version: '0.3.0',
     planId: `${envelope.id}-plan`,
     sourceEnvelopeId: envelope.id,
     createdAt: envelope.issuedAt,

@@ -2,6 +2,22 @@
 
 All notable changes to Spur Protocol are documented in this file.
 
+## 0.3.0
+
+### Changed (breaking, `SkillDemonstration` only)
+
+- `SkillDemonstration` gains two new required fields: `contributorPublicKey` (PEM-encoded Ed25519 SPKI public key) and `signature` (base64-encoded Ed25519 signature). The signature covers the canonical (stably-stringified) payload with only `signature` itself omitted -- `contributorPublicKey` is covered, so the claimed identity can't be swapped onto a stolen signature after the fact.
+- This replaces the compliance-bundle HMAC shared-secret signing model for demonstration submissions specifically: a shared secret can't work once submission is open to independent contributors who don't share a secret with the verifier. Asymmetric per-contributor keypairs do.
+- Breaking change to `SkillDemonstration` alone (introduced hours earlier in 0.2.0, with no real external consumers yet) -- acceptable under SemVer's 0.y.z "anything may change" allowance for a Draft-status protocol. `SpurEnvelope`, `SkillPack`, `GovernancePolicy`, `ExecutionPlan`, `RobotProfile`, `AdapterContract`, and `AuditEvent` are all unchanged in shape; their `version` const is bumped to `0.3.0` alongside `SkillDemonstration` to keep the whole schema family on one protocol version number, per existing convention.
+
+### Added
+
+- `@spurprotocol/compiler` now publicly exports `stableStringify` (previously internal to `normalize.ts`) so any package that needs to sign or hash a Spur object -- Studio's signing commands, a verifying server -- uses the exact same canonicalization the compiler itself uses for `ExecutionPlan.hash`, rather than each reimplementing it slightly differently and risking silent signature-mismatch bugs.
+
+### Notes
+
+- `examples/demonstration.sample.json` now carries a real Ed25519 keypair-signed payload, generated and self-verified as part of this change, not a placeholder.
+
 ## 0.2.1 (`@spurprotocol/validator` only)
 
 ### Fixed

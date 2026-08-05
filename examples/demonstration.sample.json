@@ -1,8 +1,9 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "demonstrationId": "demo-clean-bathroom-0001",
   "skillId": "skill-clean-bathroom-v1",
   "contributorId": "contributor-0001",
+  "contributorPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAAxIIGX2cbo1OEJE9bpyzyRzlnD0EBODQ1tXcTi7RIf4=\n-----END PUBLIC KEY-----\n",
   "submittedAt": "2026-02-01T12:00:00Z",
   "media": [
     {
@@ -13,9 +14,13 @@
   ],
   "consent": {
     "licenseType": "CC-BY-4.0",
-    "usageGrant": ["training", "evaluation"],
+    "usageGrant": [
+      "training",
+      "evaluation"
+    ],
     "revocable": true,
     "attestedAt": "2026-02-01T12:00:00Z"
   },
-  "reviewStatus": "pending"
+  "reviewStatus": "pending",
+  "signature": "cJGj67MszAwi8iJIVgTswttRIxRdAscpB/zKGDRvK1+R0rlO+Mpfy1rFRQojN8PkqDI5HvVr94Q8chVFRjhfDA=="
 }

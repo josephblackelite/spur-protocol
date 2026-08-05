@@ -6,7 +6,7 @@
     "additionalProperties": false,
     "properties": {
         "version": {
-            "const": "0.2.0"
+            "const": "0.3.0"
         },
         "demonstrationId": {
             "type": "string"
@@ -16,6 +16,14 @@
         },
         "contributorId": {
             "type": "string"
+        },
+        "contributorPublicKey": {
+            "type": "string",
+            "description": "PEM-encoded Ed25519 SPKI public key identifying the contributor who signed this demonstration."
+        },
+        "signature": {
+            "type": "string",
+            "description": "Base64-encoded Ed25519 signature over the canonical (stably-stringified) SkillDemonstration payload with only the 'signature' field itself omitted -- contributorPublicKey and every other field are covered, so tampering with the claimed identity or any other field after signing invalidates the signature. Signed by the private key matching contributorPublicKey."
         },
         "submittedAt": {
             "type": "string",
@@ -76,6 +84,8 @@
         "demonstrationId",
         "skillId",
         "contributorId",
+        "contributorPublicKey",
+        "signature",
         "submittedAt",
         "media",
         "consent",

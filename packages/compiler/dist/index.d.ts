@@ -1,4 +1,5 @@
 import { ExecutionPlan, GovernancePolicy, SkillPack, SpurEnvelope } from '@spurprotocol/types';
+export { stableStringify } from './normalize.js';
 export declare function compileExecutionPlan(params: {
     envelope: SpurEnvelope;
     skill: SkillPack;

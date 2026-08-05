@@ -79,4 +79,15 @@ describe('validator', () => {
 
     expect(() => validateSkillDemonstration(invalidDemonstration)).toThrow(/must match pattern/i);
   });
+
+  it('rejects a skill demonstration missing signature or contributorPublicKey', () => {
+    const missingSignature = loadExample('demonstration.sample.json');
+    delete missingSignature.signature;
+
+    const missingPublicKey = loadExample('demonstration.sample.json');
+    delete missingPublicKey.contributorPublicKey;
+
+    expect(() => validateSkillDemonstration(missingSignature)).toThrow(/required property/i);
+    expect(() => validateSkillDemonstration(missingPublicKey)).toThrow(/required property/i);
+  });
 });
