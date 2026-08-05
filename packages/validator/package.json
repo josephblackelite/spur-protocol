@@ -1,6 +1,6 @@
 {
   "name": "@spurprotocol/validator",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
@@ -18,8 +18,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "test": "vitest run"
+    "build": "node scripts/copy-schemas.mjs && tsc -p tsconfig.json",
+    "test": "node scripts/copy-schemas.mjs && vitest run"
   },
   "dependencies": {
     "ajv": "^8.17.1",

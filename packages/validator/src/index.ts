@@ -13,14 +13,14 @@ import {
   SpurEnvelope,
 } from '@spurprotocol/types';
 
-import adapterContractSchema from '../../../schemas/AdapterContract.schema.json' with { type: 'json' };
-import auditEventSchema from '../../../schemas/AuditEvent.schema.json' with { type: 'json' };
-import executionPlanSchema from '../../../schemas/ExecutionPlan.schema.json' with { type: 'json' };
-import governancePolicySchema from '../../../schemas/GovernancePolicy.schema.json' with { type: 'json' };
-import robotProfileSchema from '../../../schemas/RobotProfile.schema.json' with { type: 'json' };
-import skillDemonstrationSchema from '../../../schemas/SkillDemonstration.schema.json' with { type: 'json' };
-import skillPackSchema from '../../../schemas/SkillPack.schema.json' with { type: 'json' };
-import spurEnvelopeSchema from '../../../schemas/SpurEnvelope.schema.json' with { type: 'json' };
+import adapterContractSchema from './schemas/AdapterContract.schema.json' with { type: 'json' };
+import auditEventSchema from './schemas/AuditEvent.schema.json' with { type: 'json' };
+import executionPlanSchema from './schemas/ExecutionPlan.schema.json' with { type: 'json' };
+import governancePolicySchema from './schemas/GovernancePolicy.schema.json' with { type: 'json' };
+import robotProfileSchema from './schemas/RobotProfile.schema.json' with { type: 'json' };
+import skillDemonstrationSchema from './schemas/SkillDemonstration.schema.json' with { type: 'json' };
+import skillPackSchema from './schemas/SkillPack.schema.json' with { type: 'json' };
+import spurEnvelopeSchema from './schemas/SpurEnvelope.schema.json' with { type: 'json' };
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 addFormats(ajv);

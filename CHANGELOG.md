@@ -2,6 +2,15 @@
 
 All notable changes to Spur Protocol are documented in this file.
 
+## 0.2.1 (`@spurprotocol/validator` only)
+
+### Fixed
+
+- `@spurprotocol/validator` imported its JSON schemas via a monorepo-relative path (`../../../schemas/*.schema.json`). That path only resolves inside this repo's own working tree — once the package was installed from npm anywhere else, the import silently threw `MODULE_NOT_FOUND`, which `@spurstudio/cli`'s `validate` command (and any other consumer with equivalent error handling) caught and treated as "nothing to validate," so every validation call silently no-op'd regardless of input. This affected every published version, including 0.2.0.
+- Fix: the seven schemas are now copied into `packages/validator/src/schemas/` at build time (`scripts/copy-schemas.mjs`, generated fresh from the root `schemas/` directory on every build — never hand-edit the copy) and imported via a local relative path. `tsc` copies these into `dist/schemas/` alongside the compiled JS, so the published tarball is now self-contained.
+- Verified by installing the packed tarball into a throwaway project entirely outside this repo and confirming `validateSpurEnvelope` both rejects an invalid envelope and accepts a valid one against the real installed package — not just against local `dist/` inside the monorepo.
+- `@spurprotocol/types` and `@spurprotocol/compiler` were not affected: `types`' schema imports are type-only and erased at compile time (its compiled output has no runtime schema reference at all), and `compiler` never imports schema files directly.
+
 ## 0.2.0
 
 ### Added
