@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spur Protocol</title>
+<meta name="description" content="An open, versioned language for what robots do and how you prove it happened." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
+        <rect x="2" y="2" width="24" height="24" rx="7" />
+        <path d="M9 17.5c0 2 1.8 3 5 3s5-1 5-2.6c0-3.6-9.4-2-9.4-5.9C9.6 10 11.7 9 14.6 9c2.6 0 4.4.8 5.2 2.4" />
+      </svg>
+      <span class="brand-word">Spur<span>Protocol</span></span>
+    </a>
+    <nav class="site-nav">
+      <a href="#pipeline">Overview</a>
+      <a href="#explore">Explore</a>
+      <a href="#start">Get Started</a>
+      <a class="site-nav-cta" href="https://github.com/josephblackelite/spur-protocol">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="eyebrow">Draft &middot; v0.3.0 &middot; MIT licensed</div>
+      <h1>A structured language for what robots do,<br />and how you prove it happened.</h1>
+      <p class="lede">
+        Spur Protocol is an open standard for packaging, validating, and deploying robotics Skill
+        Packs across heterogeneous autonomous fleets &mdash; and, as of 0.3.0, for recording a signed,
+        licensable human demonstration behind one. Four canonical objects compile into a runtime
+        contract. Nothing here is marketing copy; every claim below is generated from the schemas in
+        this repo.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="#explore">Explore the objects</a>
+        <a class="btn secondary" href="https://www.npmjs.com/package/@spurprotocol/validator">npm install</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="pipeline" class="pipeline">
+    <div class="container">
+      <div class="section-label">The pipeline</div>
+      <h2>Four inputs compile into one runtime-ready plan.</h2>
+      <div class="pipeline-diagram" aria-hidden="true">
+        <div class="pipeline-node core">Task Envelope</div>
+        <div class="pipeline-plus">+</div>
+        <div class="pipeline-node core">Skill Pack</div>
+        <div class="pipeline-plus">+</div>
+        <div class="pipeline-node core">Governance Policy</div>
+        <div class="pipeline-arrow">&rarr;</div>
+        <div class="pipeline-node result">Execution Plan</div>
+        <div class="pipeline-arrow">&rarr;</div>
+        <div class="pipeline-node runtime">Fleet Runtime</div>
+      </div>
+      <p class="pipeline-caption">
+        A Task Envelope captures intent and context. A Skill Pack contributes executable
+        capabilities. A Governance Policy constrains allowable behavior. <code>compileExecutionPlan()</code>
+        resolves these into a hashed, deterministic Execution Plan. Adapters translate that plan into
+        platform-specific commands &mdash; ROS2, VDA 5050, or a vendor API &mdash; while preserving
+        protocol semantics, and a conformant runtime emits an append-only Audit Event trail for every
+        step.
+      </p>
+    </div>
+  </section>
+
+  <section id="explore" class="explorer">
+    <div class="container">
+      <div class="section-label">Explore the protocol</div>
+      <h2>Eight objects. Every field, every example, pulled live from this repo.</h2>
+      <p class="lede">
+        This isn't documentation written about the schemas. It's generated from them at build time
+        &mdash; if a field here is wrong, the schema itself is wrong.
+      </p>
+
+      <div class="explorer-shell">
+        <div class="explorer-list" id="explorer-list" role="tablist" aria-label="Protocol objects"></div>
+        <div class="explorer-detail" id="explorer-detail"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="getting-started">
+    <div class="container">
+      <div class="section-label">Get started</div>
+      <h2>Install it. Validate something. Compile a plan.</h2>
+
+      <div class="code-grid">
+        <div class="code-panel">
+          <div class="code-panel-head"><span class="code-tag">SH</span><span class="code-filename">install</span></div>
+          <pre class="code-block"><code>npm i @spurprotocol/types @spurprotocol/validator @spurprotocol/compiler</code></pre>
+        </div>
+
+        <div class="code-panel">
+          <div class="code-panel-head"><span class="code-tag">TS</span><span class="code-filename">validate an envelope</span></div>
+          <pre class="code-block"><code><span class="tok-key">import</span> { validateSpurEnvelope } <span class="tok-key">from</span> <span class="tok-str">'@spurprotocol/validator'</span>;
+
+validateSpurEnvelope(envelope); <span class="tok-comment">// throws with the exact field that failed, or returns</span></code></pre>
+        </div>
+
+        <div class="code-panel">
+          <div class="code-panel-head"><span class="code-tag">TS</span><span class="code-filename">compile a plan</span></div>
+          <pre class="code-block"><code><span class="tok-key">import</span> { compileExecutionPlan } <span class="tok-key">from</span> <span class="tok-str">'@spurprotocol/compiler'</span>;
+
+<span class="tok-key">const</span> plan = compileExecutionPlan({ envelope, skill, policy, robot });
+console.log(plan.hash, plan.planId); <span class="tok-comment">// deterministic -- same inputs, same hash</span></code></pre>
+        </div>
+      </div>
+
+      <p class="small subtle code-caption">
+        Full spec, conformance vectors, and the runtime contract live in the repo &mdash;
+        <a href="https://github.com/josephblackelite/spur-protocol/tree/master/spec">spec/</a> and
+        <a href="https://github.com/josephblackelite/spur-protocol/tree/master/examples">examples/</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="ecosystem">
+    <div class="container">
+      <div class="section-label">Built on this</div>
+      <div class="ecosystem-grid">
+        <a class="ecosystem-card" href="https://github.com/josephblackelite/spurstudio">
+          <span class="ecosystem-kicker">CLI &amp; signing tool</span>
+          <h3>Spur Studio</h3>
+          <p class="subtle small">Records, packages, and signs a Skill Demonstration against this protocol. Open source.</p>
+        </a>
+        <a class="ecosystem-card" href="https://spurstore.com">
+          <span class="ecosystem-kicker">Marketplace</span>
+          <h3>Spur Store</h3>
+          <p class="subtle small">Where a verified, signed demonstration built on this protocol gets licensed to robotics and AI companies.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
+            <rect x="2" y="2" width="24" height="24" rx="7" />
+            <path d="M9 17.5c0 2 1.8 3 5 3s5-1 5-2.6c0-3.6-9.4-2-9.4-5.9C9.6 10 11.7 9 14.6 9c2.6 0 4.4.8 5.2 2.4" />
+          </svg>
+          <span class="brand-word">Spur<span>Protocol</span></span>
+        </div>
+        <p class="footer-tagline">An open standard for robotics Skill Packs. Draft, v0.3.0, MIT licensed.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Protocol</h4>
+        <a href="https://github.com/josephblackelite/spur-protocol">GitHub</a>
+        <a href="https://github.com/josephblackelite/spur-protocol/blob/master/CHANGELOG.md">Changelog</a>
+        <a href="https://www.npmjs.com/package/@spurprotocol/validator">npm</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ecosystem</h4>
+        <a href="https://github.com/josephblackelite/spurstudio">Spur Studio</a>
+        <a href="https://spurstore.com">Spur Store</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Spur Protocol is Draft status (v0.3.0) &mdash; anything may change before 1.0, per SemVer's own
+      rules for 0.y.z releases. See <a href="https://github.com/josephblackelite/spur-protocol/blob/master/spec/versioning.md">spec/versioning.md</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
